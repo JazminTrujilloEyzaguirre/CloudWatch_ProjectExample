@@ -1,0 +1,12 @@
+policies:
+  - Effect: "Allow"
+    Action:
+      - "logs:CreateLogGroup"
+      - "logs:CreateLogStream"
+      - "logs:PutLogEvents"
+    Resource: "*"
+  - Effect: "Allow"
+    Action:
+      - "SNS:Publish"
+      - "SNS:GetTopicAttributes"
+    Resource: "arn:aws:sns:#{AWS::Region}:#{AWS::AccountId}:cloudwatch_example-dashboard-${self:provider.stage}-alarma-step-function"

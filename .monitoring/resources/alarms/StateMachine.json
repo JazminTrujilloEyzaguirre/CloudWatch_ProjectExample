@@ -1,0 +1,24 @@
+{
+    "StateMachineExecutionsFailed": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmName": "StateMachine-Executions-Failed",
+        "AlarmDescription": "StateMachine Failed in Stage: ${self:provider.stage}",
+        "AlarmActions": [{ "Ref": "AlarmEmailNotificationSnsTopic" }],
+        "Namespace": "AWS/States",
+        "MetricName": "ExecutionsFailed",
+        "Statistic": "Maximum",
+        "Period": "60",
+        "Dimensions": [
+          {
+            "Name": "StateMachineArn",
+            "Value": "arn:aws:states:${self:provider.region}:${self:provider.arnStateMachine}:stateMachine:ExampleNameState"
+          }
+        ],
+        "EvaluationPeriods": "1",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": "0",
+        "Unit" : "Count"
+      }
+    }
+}
