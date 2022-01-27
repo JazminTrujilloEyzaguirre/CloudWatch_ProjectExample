@@ -1,0 +1,12 @@
+Resources:
+# Monitor
+  MonitorDashboardV1: ${file(.monitoring/resources/dashboard.js)}
+
+  AlarmEmailNotificationSnsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription: ${self:custom.stageVariables.alarmNotificationEmails}
+      DisplayName: "StateMachine-Error-${self:provider.stage}"
+
+# State Machine
+  StateMachineExecutionsFailed: ${file(.monitoring/resources/alarms/StateMachine.json):StateMachineExecutionsFailed}

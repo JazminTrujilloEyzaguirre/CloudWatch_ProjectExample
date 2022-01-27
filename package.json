@@ -1,0 +1,22 @@
+{
+    "name": "pcrv",
+    "version": "1.0.1",
+    "description": "",
+    "main": "index.js",
+    "keywords": [
+        "cloudWatch"
+    ],
+    "author": "Jazmin Trujillo",
+    "license": "ISC",
+    "devDependencies": {
+        "serverless-domain-manager": "2.6.13",
+        "serverless-plugin-aws-alerts": "1.6.1",
+        "serverless-plugin-existing-s3": "2.4.0",
+        "serverless-plugin-split-stacks": "1.9.2",
+        "serverless-pseudo-parameters": "2.5.0"
+    },
+    "dependencies": {
+        "serverless": "^2.10.0",
+        "serverless-plugin-custom-roles": "1.1.1"
+    }
+}

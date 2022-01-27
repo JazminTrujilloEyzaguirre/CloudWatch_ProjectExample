@@ -1,0 +1,9 @@
+region: us-east-1
+arnStateMachine: 282782924650
+
+# email para notificacion de fallo del statemachine
+alarmNotificationEmails:
+  - Endpoint: jazmin@kranio.io
+    Protocol: email
+
+# Aquí deben ir todas tus arn role, vpc, deploymentbucket, etc.

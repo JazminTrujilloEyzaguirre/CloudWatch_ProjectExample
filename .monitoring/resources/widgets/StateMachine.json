@@ -1,0 +1,10 @@
+{
+    "StateMachineFailed": {
+        "view": "timeSeries",
+        "stacked": false,
+        "metrics": [
+            [ "AWS/States", "ExecutionsFailed", "StateMachineArn", "arn:aws:states:${self:provider.region}:${self:provider.arnStateMachine}:stateMachine:ExampleNameState", { "region": "${self:provider.region}" } ]
+        ],
+        "region": "${self:provider.region}"
+    }
+}

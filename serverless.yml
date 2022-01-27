@@ -1,0 +1,40 @@
+service: cloudwatch_example_project
+
+frameworkVersion: '>=1.51.0'
+
+package:
+  exclude:
+    - '**/__pycache__/**'
+    - .gitignore
+    - .serverless/**
+    - .idea/**
+    - division-config/**
+    - stage-variables/**
+    - node_modules/**
+    - package-lock.json
+    - package.json
+
+custom:
+  region: ${file(${self:provider.stage}.yml):REGION}
+  prefix: ${self:service}-${self:provider.stage}
+  policies: ${file(.policy/iam-role-statements.yml):policies}
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: ${self:custom.stageVariables.region}
+  stage: ${opt:stage, 'dev'}
+  arnStateMachine: ${self:custom.stageVariables.arnStateMachine}
+  stackTags:
+    "Proyecto": "EDDIE"
+  deploymentBucket:
+    name: ${self:custom.stageVariables.deployment-bucket}
+
+resources:
+  - ${file(.monitoring/resources/monitoring.yml)}
+
+plugins:
+  - serverless-python-requirements
+  - serverless-step-functions
+  - serverless-pseudo-parameters
+  - serverless-plugin-include-dependencies
