@@ -1,5 +1,5 @@
 region: us-west-2
-arnStateMachine: 533588983801
+arnStateMachine: 533628681471 # este es un arn de ejemplo
 
 # email para notificacion
 alarmNotificationEmails:
