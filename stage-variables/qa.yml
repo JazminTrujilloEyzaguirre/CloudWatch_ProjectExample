@@ -1,5 +1,5 @@
 region: us-east-1
-arnStateMachine: 282782924650
+arnStateMachine: 216382464650
 
 # email para notificacion de fallo del statemachine
 alarmNotificationEmails:
